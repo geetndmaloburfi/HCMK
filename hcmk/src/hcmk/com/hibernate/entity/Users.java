@@ -1,8 +1,14 @@
 package hcmk.com.hibernate.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,12 +20,7 @@ public class Users {
 		@Id
 		@Column(name="userName")
 	    String userName;
-		@Override
-		public String toString() {
-			return "Users [userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
-					+ ", dateOfBirth=" + dateOfBirth + ", contactDetail=" + contactDetail + ", gender=" + gender
-					+ ", emailAddress=" + emailAddress + ", password=" + password + "]";
-		}
+		
 
 		@Column(name="firstName")
 	    String firstName;
@@ -35,7 +36,49 @@ public class Users {
 	    String emailAddress;
 		@Column(name="password")
 	    String password;
-	    
+		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY)
+		List<Address> address=new ArrayList<Address>();
+		@OneToOne(mappedBy="userName",fetch = FetchType.LAZY)
+		Cart cartId;
+		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY)
+		List<Orders> orders=new ArrayList<Orders>();
+		
+	public List<Address> getAddress() {
+			return address;
+		}
+
+
+
+		public void setAddress(List<Address> address) {
+			this.address = address;
+		}
+
+
+
+		public Cart getCartId() {
+			return cartId;
+		}
+
+
+
+		public void setCartId(Cart cartId) {
+			this.cartId = cartId;
+		}
+
+
+
+		public List<Orders> getOrders() {
+			return orders;
+		}
+
+
+
+		public void setOrders(List<Orders> orders) {
+			this.orders = orders;
+		}
+
+
+
 	public Users() {
 		
 	}
@@ -129,5 +172,11 @@ public class Users {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	@Override
+	public String toString() {
+		return "Users [userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", dateOfBirth=" + dateOfBirth + ", contactDetail=" + contactDetail + ", gender=" + gender
+				+ ", emailAddress=" + emailAddress + ", password=" + password + "]";
 	}
 }

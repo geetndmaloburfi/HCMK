@@ -2,8 +2,11 @@
 
 
 <div class="one">
+<div class="container"><%@include file="message/message.jsp" %></div>
+
 	<section>
 		<div class="main">
+		
 			<p class="sign" align="center">Sign in</p>
 			<form class="form1" action="<%=request.getContextPath()%>/User"
 				method="post">
@@ -29,15 +32,8 @@
 					<a href="#" class="forgot">Forgot Password?</a>
 				</p>
 			</form>
-
-
 		</div>
-
-
-
-
 	</section>
-
 </div>
 
 

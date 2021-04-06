@@ -12,20 +12,27 @@
 <hibernate-configuration>
 	<session-factory>
 	
-   		<property name="connection.url">jdbc:postgresql://localhost:5432/demo</property> <!-- BD Mane -->
+   		<property name="connection.url">jdbc:postgresql://localhost:5432/HCMK</property> <!-- BD Mane -->
    		<property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
    		<property name="connection.username">postgres</property> <!-- DB User -->
    		<property name="connection.password">geetuthegreat</property> <!-- DB Password -->
    		
    		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
    		<property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
-		
 		<property name="show_sql">true</property> <!-- Show SQL in console -->
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 		<property name="hibernate.current_session_context_class">thread</property>
 		<mapping class="hcmk.com.hibernate.entity.Product"/>
-		
+		<mapping class="hcmk.com.hibernate.entity.Category"/>
 		<mapping class="hcmk.com.hibernate.entity.Users"/>
+		<mapping class="hcmk.com.hibernate.entity.Supply"/>
+		<mapping class="hcmk.com.hibernate.entity.Address"/>
+		<mapping class="hcmk.com.hibernate.entity.Cart"/>
+		<mapping class="hcmk.com.hibernate.entity.CartDetail"/>
+		<mapping class="hcmk.com.hibernate.entity.Orders"/>
+		<mapping class="hcmk.com.hibernate.entity.OrderDetail"/>
+		<mapping class="hcmk.com.hibernate.entity.Shipping"/>
+		<mapping class="hcmk.com.hibernate.entity.Admin"/>
 		
 		
 	</session-factory>

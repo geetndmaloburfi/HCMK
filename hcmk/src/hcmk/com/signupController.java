@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import hcmk.com.hibernate.entity.Users;
 
@@ -51,6 +52,9 @@ public class signupController extends HttpServlet {
 		user.setContactDetail(request.getParameter("contactDetail"));
 		user.setPassword(request.getParameter("password"));
 		UsersDAO.addUsersDetails(user);
+		HttpSession newSession=request.getSession(true);
+		newSession.setMaxInactiveInterval(300);
+		newSession.setAttribute("message","Successfull account created now you can login with your credentail" );	
 		
 		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}

@@ -5,7 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String username=null,sessionID=null;
-if(request.getSession().getAttribute("username") ==null)
+String currentLoggedInUser=null;
+if(request.getSession().getAttribute("username") ==null )
 {
 	%>
 	<jsp:include page="/include/header.jsp"/>
@@ -13,6 +14,7 @@ if(request.getSession().getAttribute("username") ==null)
 }
 else{
 	username=request.getSession().getAttribute("username").toString();
+	
 	sessionID=request.getSession().getId();
 	%>
 	<jsp:include page="/include/userheader.jsp"/>
@@ -88,5 +90,7 @@ else{
 
 	</div>
 </div>
+
+
 
 <jsp:include page="/include/footer.jsp" />

@@ -1,9 +1,18 @@
 package hcmk.com.hibernate.entity;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -13,35 +22,57 @@ import javax.persistence.Table;
 public class Product {
 	@Id 
 	@Column(name="productId")
-	int productId;
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	long productId;
+	
 	@Column(name = "productName")
 	String productName;
+	
 	@Column(name = "title")
 	String title;
+	
 	@Column(name="metal")
 	String metal;
-	@Column(name="summary")
+	
+	@Column(name="summary",length=3000)
 	String summary;
+	
 	@Column(name = "price")
 	String price;
+	
 	@Column(name="makingCharge")
 	String makingCharge;
+	
 	@Column(name = "quantity")
 	int quantity;
+	
 	@Column(name = "purity")
 	int purity; 
+	
 	@Column(name = "cDate")
 	String cDate;
+	
 	@Column(name="mDate")
 	String  mDate;
-	@Column(name="categoryId")
-	int categoryId;
-	@Column(name="supplyId")
-	int  supplyId;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="supplyId")
+	Supply supplyId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="categoryId")
+	Category categoryId;
+	
+	
+	
 	@Column(name="photos")
 	String photos;
+	
 	@Column(name="bestseller")
 	Boolean bestseller;
+	@OneToMany(mappedBy="productId",fetch = FetchType.LAZY)
+	List<CartDetail> cartDetailId=new ArrayList<CartDetail>();
+	
+	
 	public Product() {
 			
 		}
@@ -50,8 +81,33 @@ public class Product {
 	
 
 
+	public Product(long productId, String productName, String title, String metal, String summary, String price,
+			String makingCharge, int quantity, int purity, String cDate, String mDate, Category categoryId,
+			Supply supplyId, String photos, Boolean bestseller) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.title = title;
+		this.metal = metal;
+		this.summary = summary;
+		this.price = price;
+		this.makingCharge = makingCharge;
+		this.quantity = quantity;
+		this.purity = purity;
+		this.cDate = cDate;
+		this.mDate = mDate;
+		this.categoryId = categoryId;
+		this.supplyId = supplyId;
+		this.photos = photos;
+		this.bestseller = bestseller;
+	}
+
+
+
+
+
 	public Product(String productName, String title, String metal, String summary, String price, String makingCharge,
-			int quantity, int purity, String cDate, String mDate, int categoryId, int supplyId, String photos,
+			int quantity, int purity, String cDate, String mDate, Category categoryId, Supply supplyId, String photos,
 			Boolean bestseller) {
 		super();
 		this.productName = productName;
@@ -103,7 +159,7 @@ public class Product {
 		
 		this.photos = photos;
 	}
-	public int getProductId() { 
+	public long getProductId() { 
 		return productId;
 	}
 	public void setProductId(int productId) {
@@ -169,16 +225,16 @@ public class Product {
 	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
-	public int getCategoryId() {
+	public Category getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Category categoryId) {
 		this.categoryId = categoryId;
 	}
-	public int getSupplyId() {
+	public Supply getSupplyId() {
 		return supplyId;
 	}
-	public void setSupplyId(int supplyId) {
+	public void setSupplyId(Supply supplyId) {
 		this.supplyId = supplyId;
 	}
 	public String getPhotos() {

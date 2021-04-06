@@ -5,13 +5,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.transform.AliasToEntityMapResultTransformer;
+
 
 import hcmk.com.hibernate.DAO.UsersDAO;
 import hcmk.com.hibernate.entity.Users;
@@ -35,15 +34,14 @@ public class Validatelogin extends HttpServlet {
 		String password=request.getParameter("password");
 		PrintWriter out =response.getWriter();
 		Users user=UsersDAO.getUser(userName,password);
-		request.setAttribute("user", user);
+		//request.setAttribute("user", user.getUserName()+"");
 		System.out.println("in post");
 		if(user!=null)
 		{
 			request.getSession().invalidate();
 			HttpSession newSession=request.getSession(true);
 			newSession.setMaxInactiveInterval(300);
-			newSession.setAttribute("username", user.getFirstName());
-			
+			newSession.setAttribute("username", user.getUserName());
 			getServletContext().getRequestDispatcher("/userSpecPage.jsp").forward(request, response);
 		}
 		else
