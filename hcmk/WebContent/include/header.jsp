@@ -10,49 +10,26 @@
 <!-- Mobile Metas -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Site Metas -->
-<title>Hcmk | home</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- site icon -->
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Volkhov:400i"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="icon" href="images/favicon.ico" type="image/png" />
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<!-- FontAwesome Icons core CSS -->
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<!-- Custom animate styles for this template -->
-<link href="css/animate.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="style1.css" rel="stylesheet">
-<!-- Responsive styles for this template -->
-<link href="css/responsive.css" rel="stylesheet">
-<!-- Colors for this template -->
-<link href="css/colors.css" rel="stylesheet">
-<!-- light box gallery -->
-<link href="css/ekko-lightbox.css" rel="stylesheet">
+<title>Hcmk | home</title>
 
-<link href='https://fonts.googleapis.com/css?family=Clicker Script'
-	rel='stylesheet'>
+<!-- site icon and fonts-->
+<link rel="icon" href="images/favicon.ico" type="image/png" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">\
+<link href='https://fonts.googleapis.com/css?family=Clicker Script' rel='stylesheet'>
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="style1.css" rel="stylesheet">
 <link href="css/login1.css" rel="stylesheet">
 <link href="css/signup.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
 
 <!-- magnifiner -->
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 * {
 	box-sizing: border-box;
@@ -150,9 +127,7 @@ function magnify(imgID, zoom) {
 </head>
 
 <body id="home_page" class="home_page">
-	<!-- loader -->
-
-	<!-- end loader -->
+	
 	<!-- header -->
 	<header class="header">
 
@@ -260,9 +235,13 @@ function magnify(imgID, zoom) {
 							aria-labelledby="navbarDropdow">
 
 							<a class="dropdown-item text-secondary "
-								href="<%=request.getContextPath()%>/Login">LOGIN</a> <a
+								href="<%=request.getContextPath()%>/Login">LOGIN</a> 
+							<a
 								class="dropdown-item text-secondary "
 								href="<%=request.getContextPath()%>/SignUp">SIGNUP</a>
+							<a
+								class="dropdown-item text-secondary "
+								href="<%=request.getContextPath()%>/Admin">ADMIN LOGIN</a>
 						</div></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">

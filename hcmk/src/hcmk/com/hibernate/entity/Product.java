@@ -130,13 +130,20 @@ public class Product {
 
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", title=" + title + ", metal="
 				+ metal + ", summary=" + summary + ", price=" + price + ", makingCharge=" + makingCharge + ", quantity="
-				+ quantity + ", purity=" + purity + ", cDate=" + cDate + ", mDate=" + mDate + ", categoryId="
-				+ categoryId + ", supplyId=" + supplyId + ", photos=" + photos + ", bestseller="+bestseller+"]";
+				+ quantity + ", purity=" + purity + ", cDate=" + cDate + ", mDate=" + mDate + ", supplyId=" + supplyId
+				+ ", categoryId=" + categoryId + ", photos=" + photos + ", bestseller=" + bestseller + ", cartDetailId="
+				+ cartDetailId + "]";
 	}
+
+
+
 
 
 	public Boolean getBestseller() {

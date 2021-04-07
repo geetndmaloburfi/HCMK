@@ -47,10 +47,7 @@ public class ProductDAO {
 		try {
 			session.beginTransaction();
 			products = session.createQuery("from product where bestseller=true").getResultList();
-			for (Product temp : products) {
-				System.out.println(temp);
-			}
-
+			
 		} finally {
 			session.close();
 
@@ -70,10 +67,7 @@ public class ProductDAO {
 		try {
 			session.beginTransaction();
 			 products= session.createQuery("from product where categoryId="+category).getResultList();
-			for(Product temp:products)
-			{
-				System.out.println(temp);
-			}
+			
 			
 		} finally {
 			session.close();
@@ -97,10 +91,7 @@ public class ProductDAO {
 			try {
 			session.beginTransaction();
 			 products= session.createQuery("from product where metal="+"'"+metal+"'").getResultList();
-			for(Product temp:products)
-			{
-				System.out.println(temp);
-			}
+			
 			
 		} finally {
 			session.close();
@@ -123,6 +114,22 @@ public class ProductDAO {
 
 		}
 		return products.get(0);
+	}
+	@SuppressWarnings("unchecked")
+	public static List<Product> getAllProducts() {
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Product.class)
+				.buildSessionFactory();
+		List<Product> products;
+		Session session = factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			products = session.createQuery("from product").getResultList();
+			
+		} finally {
+			session.close();
+
+		}
+		return products;
 	}
 
 }
