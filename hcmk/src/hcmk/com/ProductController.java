@@ -26,11 +26,25 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int  productid=Integer.parseInt(request.getParameter("p"));
+		boolean admin=Boolean.parseBoolean(request.getParameter("admin"));
+		if(admin==true)
+		{
 		Product product=ProductDAO.getProductById(productid);
 		//System.out.println("product.productId"+product.getProductId());
 		request.setAttribute("product", product);
 		request.setAttribute("productid", productid);
-		getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/productUpdate.jsp").forward(request, response);
+		}
+		else
+		{
+			Product product=ProductDAO.getProductById(productid);
+			//System.out.println("product.productId"+product.getProductId());
+			request.setAttribute("product", product);
+			request.setAttribute("productid", productid);
+			getServletContext().getRequestDispatcher("/product.jsp").forward(request, response);
+			
+			
+		}
 	}
 
 	

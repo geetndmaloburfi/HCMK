@@ -37,7 +37,12 @@ public class signupController extends HttpServlet {
 		// TODO Auto-generated method stub
 		if(!request.getParameter("password").equals(request.getParameter("password2")))
 		{
-			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+			HttpSession newSession=request.getSession(true);
+			newSession.setMaxInactiveInterval(300);
+			
+			newSession.setAttribute("message","password did not match try again" );	
+			
+			getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
 		}
 		else
 		{

@@ -39,6 +39,10 @@ public class ValidateAdmin extends HttpServlet {
 			//List<Product> products = ProductDAO.getAllProducts();
 			getServletContext().getRequestDispatcher("/adminpages/showproducts.jsp").forward(request, response);
 		}
+		else if(working==2)
+		{
+			getServletContext().getRequestDispatcher("/adminpages/addproduct.jsp").forward(request, response);
+		}
 		
 		
 	}

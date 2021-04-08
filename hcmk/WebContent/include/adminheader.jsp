@@ -91,3 +91,24 @@
 			</div>
 		</div>
 	</header>
+	<hr>
+<div class="container-fluid">
+	<div class="row">
+		<div class=" bg-black text-white col-12 col-md-3 col-xl-2 bd-sidebar"
+			style="background-color: black;">
+			<div class=" mt-3 mb-3">
+				<h2 class="text-muted">HCMK ADMIN PENAL</h2>
+				<%int getlink=0; %>
+				<ul class="nav nav-tabs flex-column">
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=1;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=1">VIEW ALL PRODUCTS</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=2;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=2">ADD PRODUCTS</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=4;%>" href="#">ALL CATEGORY</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=5;%>" href="#">ADD CATEGORY</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=6;%>" href="#">VIEW USERS</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=7;%>" href="#">VIEW ORDERS</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="#">ADD ADMIN</a></li>
+					
+				</ul>
+			</div>
+		</div>
+		
