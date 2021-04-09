@@ -38,5 +38,24 @@ public class AdminDAO {
 		else
 			return null;	
 	}
+	public static void addAdmin(Admin admin) 
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Admin.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		
+		try {
+			session.beginTransaction();
+			session.save(admin);
+			session.getTransaction().commit();
+			System.out.println("row added");
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return ;
+	}
 
 }

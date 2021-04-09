@@ -102,11 +102,11 @@
 				<ul class="nav nav-tabs flex-column">
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=1;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=1">VIEW ALL PRODUCTS</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=2;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=2">ADD PRODUCTS</a></li>
-					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=4;%>" href="#">ALL CATEGORY</a></li>
-					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=5;%>" href="#">ADD CATEGORY</a></li>
-					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=6;%>" href="#">VIEW USERS</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=4;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=3">ALL CATEGORY</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=6;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=4">VIEW USERS</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=7;%>" href="#">VIEW ORDERS</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="#">ADD ADMIN</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="<%=request.getContextPath()%>/Logout">Log Out</a></li>
 					
 				</ul>
 			</div>

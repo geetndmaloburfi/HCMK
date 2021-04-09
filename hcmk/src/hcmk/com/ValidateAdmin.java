@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import hcmk.com.hibernate.DAO.AdminDAO;
-import hcmk.com.hibernate.DAO.ProductDAO;
+
 import hcmk.com.hibernate.entity.Admin;
-import hcmk.com.hibernate.entity.Product;
-import java.util.*;
+
 
 @WebServlet("/ValidateAdmin")
 public class ValidateAdmin extends HttpServlet {
@@ -42,6 +41,14 @@ public class ValidateAdmin extends HttpServlet {
 		else if(working==2)
 		{
 			getServletContext().getRequestDispatcher("/adminpages/addproduct.jsp").forward(request, response);
+		}
+		else if(working==3)
+		{
+			getServletContext().getRequestDispatcher("/adminpages/showcategory.jsp").forward(request, response);
+		}
+		else if(working==4)
+		{
+			getServletContext().getRequestDispatcher("/adminpages/viewusers.jsp").forward(request, response);
 		}
 		
 		

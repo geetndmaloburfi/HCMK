@@ -1,5 +1,5 @@
-<%@page import="hcmk.com.hibernate.DAO.ProductDAO"%>
-<%@page import="hcmk.com.hibernate.entity.Product"%>
+<%@page import="hcmk.com.hibernate.DAO.CategoryDAO"%>
+<%@page import="hcmk.com.hibernate.entity.Category"%>
 <%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,30 +30,27 @@ else{
 		
 			<h1 class="center mt-3">All products in system</h1>
 			
-			<%!List<Product> products = ProductDAO.getAllProducts();%>
-			<c:forEach items="<%=products%>" var="product">
+			<%!List<Category> category = CategoryDAO.getAllCategory();%>
+			<c:forEach items="<%=category%>" var="cat">
 
 				<div class="card">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
-						<hr>
-							<img class="card-img mt-3 mb-3" src="${product.photos }" style="width: 100%"
-								alt="Card image">
-								<hr>
+						<div class="col-sm-3 col-md-6 col-lg-4 text-dark col-xl-2">
+							<i class="far fa-gem fa-8x mt-5 ml-3"></i>
 
 						</div>
 						<div class="col-sm-9 col-md-6 col-lg-8 col-xl-10">
 							<div class="card">
 
-								<div class="card-header"><h4>${product.productName } <span class="text-primary">Product Id</span> : ${product.productId }</h4></div>
+								<div class="card-header"><h4><span class="text-primary">Category Name</span> : ${cat.categoryName } </h4></div>
+								
 								<div class="card-body">
-									<h5 class="card-title">${product.title }</h5>
+									<h5 class="card-title"><span class="text-primary">Category Id</span> :${cat.categoryId }</h5>
+									<h5 class="card-title">${cat.categorydes }</h5>
 									
-									<p class="card-text">${product.summary }  <span class="text-primary">Price </span>:
-									${product.price }<span class="text-primary">   Making Charges </span>: ${product.makingCharge}
-									</p>
-									<a href="<%=request.getContextPath()%>/Product?p=${product.productId}&admin=true" class="btn btn-primary">View/Update</a>
+									
+									<a href="<%=request.getContextPath()%>/ViewCategoryProduct?cid=${cat.categoryId}" class="btn btn-primary">View</a>
 								</div>
 							</div>
 						</div>

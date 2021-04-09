@@ -8,9 +8,9 @@ String username = null, sessionID = null;
 boolean currentLoggedInAdmin = false;
 if (request.getSession().getAttribute("username") == null) {
 %>
-<jsp:include page="/include/header.jsp" />
+<jsp:include page="/index.jsp" />
 <%
-} else {
+return ;} else {
 if (request.getSession().getAttribute("Admin").equals("yes")) {
 	username = request.getSession().getAttribute("username").toString();
 	sessionID = request.getSession().getId();

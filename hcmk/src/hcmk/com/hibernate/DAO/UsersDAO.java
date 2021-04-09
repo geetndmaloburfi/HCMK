@@ -52,4 +52,27 @@ public class UsersDAO {
 		else
 			return null;	
 	}
+	@SuppressWarnings("unchecked")
+	public static List<Users> getAllUser() 
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Users.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		List<Users> Users;
+		
+		try {
+			session.beginTransaction();
+			Users=session.createQuery("from users").getResultList();
+			for(Users temp:Users)
+			{
+				System.out.println(temp);
+			}
+		} finally {
+			session.close();
+		}
+		return Users;
+	}
+	
 }

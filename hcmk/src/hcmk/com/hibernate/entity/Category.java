@@ -74,5 +74,9 @@ public class Category {
 		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categorydes=" + categorydes
 				+ "]";
 	}
+	public Category getCategory(int id)
+	{
+		return new Category(this.categoryId,this.categoryName,this.categorydes);
+	}
 
 }

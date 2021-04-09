@@ -28,10 +28,10 @@ else{
 
 		<div class="col-9 bg-light">
 		
-			<h1 class="center mt-3">All products in system</h1>
-			
-			<%!List<Product> products = ProductDAO.getAllProducts();%>
-			<c:forEach items="<%=products%>" var="product">
+			<h1 class="center mt-3"><%=request.getAttribute("catName")+""%>  in system</h1>
+		<%int idcat=Integer.parseInt(request.getAttribute("cid")+"");
+			List<Product> productcat = ProductDAO.getCategoryList(idcat);%>
+			<c:forEach items="<%=productcat%>" var="product">
 
 				<div class="card">
 				<div class="container-fluid">
@@ -53,7 +53,6 @@ else{
 									<p class="card-text">${product.summary }  <span class="text-primary">Price </span>:
 									${product.price }<span class="text-primary">   Making Charges </span>: ${product.makingCharge}
 									</p>
-									<a href="<%=request.getContextPath()%>/Product?p=${product.productId}&admin=true" class="btn btn-primary">View/Update</a>
 								</div>
 							</div>
 						</div>

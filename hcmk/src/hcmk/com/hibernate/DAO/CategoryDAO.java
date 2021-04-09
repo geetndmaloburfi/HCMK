@@ -28,5 +28,22 @@ public class CategoryDAO {
 		}
 		return cat.get(0);
 	}
+	@SuppressWarnings("unchecked")
+	public static List<Category> getAllCategory()
+	{
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Category.class)
+				.buildSessionFactory();
+		List<Category> cat;
+		Session session = factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			cat = session.createQuery("from category ").getResultList();
+			
+		} finally {
+			session.close();
+
+		}
+		return cat;
+	}
 
 }

@@ -27,8 +27,13 @@ else{
 
 
 		<div class="col-9 bg-light">
-			<h1 class="text-dark mt-3 ml-3"> WELCOME TO ADMIN PENAL<br> you can perform admin activity here only </h1>
-			
+		<ul class="text-dark mt-3 ml-3">
+		<li><i class="fa fa-fw fa-user fa-10x mt-3 ml-3"></i></li>
+		<li class="mt-3 ml-3">WELCOME TO ADMIN PENAL</li>
+		<li class="mt-3 ml-3">You can perform admin activity here only </li>
+		<li class="mt-3 ml-3"><a href="<%=request.getContextPath()%>/Logout">Log Out</a></li>
+		</ul>
+		
 		</div>
 	</div>
 </div>
