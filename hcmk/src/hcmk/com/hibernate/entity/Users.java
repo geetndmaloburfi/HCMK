@@ -3,6 +3,7 @@ package hcmk.com.hibernate.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,11 +37,11 @@ public class Users {
 	    String emailAddress;
 		@Column(name="password")
 	    String password;
-		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY)
+		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 		List<Address> address=new ArrayList<Address>();
-		@OneToOne(mappedBy="userName",fetch = FetchType.LAZY)
+		@OneToOne(mappedBy="userName",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 		Cart cartId;
-		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY)
+		@OneToMany(mappedBy="userName",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 		List<Orders> orders=new ArrayList<Orders>();
 		
 	public List<Address> getAddress() {

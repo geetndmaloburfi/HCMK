@@ -50,6 +50,10 @@ public class ValidateAdmin extends HttpServlet {
 		{
 			getServletContext().getRequestDispatcher("/adminpages/viewusers.jsp").forward(request, response);
 		}
+		else if(working==6)
+		{
+			getServletContext().getRequestDispatcher("/adminpages/addadmin.jsp").forward(request, response);
+		}
 		
 		
 	}

@@ -32,6 +32,7 @@ public class SupplyDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return sup.get(0);

@@ -105,7 +105,7 @@
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=4;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=3">ALL CATEGORY</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=6;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=4">VIEW USERS</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=7;%>" href="#">VIEW ORDERS</a></li>
-					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="#">ADD ADMIN</a></li>
+					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="<%=request.getContextPath()%>/ValidateAdmin?getlink=6">ADD ADMIN</a></li>
 					<li class="nav-item"><a class="nav-link text-white" onclick="<% getlink=8;%>" href="<%=request.getContextPath()%>/Logout">Log Out</a></li>
 					
 				</ul>

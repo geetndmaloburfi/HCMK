@@ -3,6 +3,7 @@ package hcmk.com.hibernate.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Category {
 	String categoryName;
 	@Column(name="categorydes")
 	String categorydes;
-	@OneToMany(mappedBy="categoryId",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="categoryId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	List<Product> products=new ArrayList<Product>();
 	public List<Product> getProducts() {
 		return products;

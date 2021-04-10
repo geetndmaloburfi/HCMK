@@ -3,6 +3,7 @@ package hcmk.com.hibernate.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ public class Cart {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="userName")
 	Users userName;	
-	@OneToMany(mappedBy="cartId",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="cartId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	List<CartDetail> cartDetailId=new ArrayList<CartDetail>();
 	
 	@Column(name = "grandTotal")

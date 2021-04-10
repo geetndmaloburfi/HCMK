@@ -46,12 +46,40 @@ public class UsersDAO {
 			}
 		} finally {
 			session.close();
+			factory.close();
 		}
 		if(Users.size()==1)
 			return Users.get(0);
 		else
 			return null;	
 	}
+	@SuppressWarnings("unchecked")
+	public static Users getUserByUserName(String username) 
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Users.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		List<Users> Users;
+		
+		try {
+			session.beginTransaction();
+			Users=session.createQuery("from users where userName='"+username+"'").getResultList();
+			for(Users temp:Users)
+			{
+				System.out.println(temp);
+			}
+		} finally {
+			session.close();
+			factory.close();
+		}
+		if(Users.size()==1)
+			return Users.get(0);
+		else
+			return null;	
+	}
+
 	@SuppressWarnings("unchecked")
 	public static List<Users> getAllUser() 
 	{
@@ -71,6 +99,7 @@ public class UsersDAO {
 			}
 		} finally {
 			session.close();
+			factory.close();
 		}
 		return Users;
 	}

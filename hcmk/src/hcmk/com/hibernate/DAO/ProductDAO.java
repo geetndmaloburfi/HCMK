@@ -52,6 +52,7 @@ public class ProductDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return products;
@@ -73,6 +74,7 @@ public class ProductDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 		
 		}
 		}
@@ -97,6 +99,7 @@ public class ProductDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 		
 		}
 		}return products;
@@ -113,6 +116,7 @@ public class ProductDAO {
 			//System.out.println(product);
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return products.get(0);
@@ -129,6 +133,7 @@ public class ProductDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return products;
@@ -157,6 +162,7 @@ public class ProductDAO {
 			//System.out.println(product);
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return ;

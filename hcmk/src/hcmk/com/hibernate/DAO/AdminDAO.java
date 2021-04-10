@@ -32,6 +32,7 @@ public class AdminDAO {
 			}
 		} finally {
 			session.close();
+			factory.close();
 		}
 		if(admin.size()==1)
 			return admin.get(0);

@@ -3,6 +3,7 @@ package hcmk.com.hibernate.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,33 +29,47 @@ public class Orders {
 	@Column(name = "grandTotal")
 	String grandTotal;
 	@Column(name = "orderDate")
-	String orderDate;	
+	String orderDate;
+	@Column(name = "paid")
+	String paid;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="shippingId")
 	Shipping shippingId;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="userName")
 	Users userName;
-	@OneToMany(mappedBy="orderDetailId",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="orderDetailId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	List<OrderDetail> orderDetailId=new ArrayList<OrderDetail>();
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="addressId")
 	Address addressId;
+	
 	public Orders() {
 		super();
 	}
-	public Orders(String subTotal, String totalTax, String grandTotal, String orderDate, Shipping shippingId,
-			Users userName, List<OrderDetail> orderDetailId, Address addressId) {
+	
+	public String getPaid() {
+		return paid;
+	}
+
+	public void setPaid(String paid) {
+		this.paid = paid;
+	}
+
+	public Orders(String subTotal, String totalTax, String grandTotal, String orderDate, String paid,
+			Shipping shippingId, Users userName, List<OrderDetail> orderDetailId, Address addressId) {
 		super();
 		this.subTotal = subTotal;
 		this.totalTax = totalTax;
 		this.grandTotal = grandTotal;
 		this.orderDate = orderDate;
+		this.paid = paid;
 		this.shippingId = shippingId;
 		this.userName = userName;
 		this.orderDetailId = orderDetailId;
 		this.addressId = addressId;
 	}
+
 	public Orders(long orderId, String subTotal, String totalTax, String grandTotal, String orderDate,
 			Shipping shippingId, Users userName, List<OrderDetail> orderDetailId, Address addressId) {
 		super();

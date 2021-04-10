@@ -24,6 +24,7 @@ public class CategoryDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return cat.get(0);
@@ -41,6 +42,7 @@ public class CategoryDAO {
 			
 		} finally {
 			session.close();
+			factory.close();
 
 		}
 		return cat;

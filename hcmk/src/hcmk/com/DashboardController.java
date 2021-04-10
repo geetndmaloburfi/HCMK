@@ -27,7 +27,22 @@ public class DashboardController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int working=Integer.parseInt(request.getParameter("getlink"));
+		if(working==1)
+		{
+			//List<Product> products = ProductDAO.getAllProducts();
+			getServletContext().getRequestDispatcher("/adminpages/showproducts.jsp").forward(request, response);
+		}
+		else if(working==2)
+		{
+			//List<Product> products = ProductDAO.getAllProducts();
+			getServletContext().getRequestDispatcher("/usercartinfo.jsp").forward(request, response);
+		}
+		else if(working==3)
+		{
+			//List<Product> products = ProductDAO.getAllProducts();
+			getServletContext().getRequestDispatcher("/adminpages/showproducts.jsp").forward(request, response);
+		}
 	}
 
 	/**
