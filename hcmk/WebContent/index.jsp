@@ -56,7 +56,8 @@ else{
 
 
 <hr>
-<div class="hr1"></div>
+<div class="hr1"> <%@include file="message/message.jsp" %>
+</div>
 <div class="bestheading">
 
 	<h1 class="Clicker">Best Sellers</h1>

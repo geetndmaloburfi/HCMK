@@ -196,8 +196,8 @@ function magnify(imgID, zoom) {
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> JEWELLERY </a>
-						<div class="dropdown-menu bg-black" style="background-color: black;"
-							aria-labelledby="navbarDropdown">
+						<div class="dropdown-menu bg-black"
+							style="background-color: black;" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item text-secondary "
 								href="<%=request.getContextPath()%>/Category?category=1"
 								onclick="<%category = 1;%>">CHAINS</a> <a
@@ -222,7 +222,7 @@ function magnify(imgID, zoom) {
 								class="dropdown-item text-secondary"
 								href="<%=request.getContextPath()%>/Category?category=8"
 								onclick="<%category = 8;%>">BANGLES</a>
-								</div></li>
+						</div></li>
 
 					<li class="nav-item"><a class="nav-link color-aqua-hover"
 						href="<%=request.getContextPath()%>/Category?category=-1"
@@ -235,32 +235,30 @@ function magnify(imgID, zoom) {
 						onclick="<%category = -3;%>">Platinum</a></li>
 					<li class="nav-item"><a class="nav-link color-aqua-hover"
 						href="<%=request.getContextPath()%>/shop.jsp">Shop</a></li>
-						<li class="nav-item"><a class="nav-link color-aqua-hover"
+					<li class="nav-item"><a class="nav-link color-aqua-hover"
 						href="<%=request.getContextPath()%>/shop.jsp">contact</a></li>
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdow"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"><i class="fa fa-fw fa-user"></i>${username} </a>
-						<div class="dropdown-menu bg-black" style="background-color: black;" aria-labelledby="navbarDropdow">
+						aria-expanded="false"><i class="fa fa-fw fa-user"></i>${username}
+					</a>
+						<div class="dropdown-menu bg-black"
+							style="background-color: black;" aria-labelledby="navbarDropdow">
 
 							<a class="dropdown-item  text-secondary"
 								href="<%=request.getContextPath()%>/Orders">ORDERS</a> <a
 								class="dropdown-item  text-secondary"
-								href="<%=request.getContextPath()%>/Dashboard">DASHBOARD</a>
-								
-								<a
-								class="dropdown-item  text-secondary"
-								href="<%=request.getContextPath()%>/Dashboard?getlink=2">CART</a>
-								
-								<a
-								class="dropdown-item   text-secondary"
+								href="<%=request.getContextPath()%>/Dashboard">DASHBOARD</a> 
+							<a class="dropdown-item  text-secondary" data-toggle="modal" data-target="#cart"
+								>CART</a>
+
+							<a class="dropdown-item   text-secondary"
 								href="<%=request.getContextPath()%>/Logout">LOGOUT</a>
-								</div>
-						</li>
-						<li class="nav-item"><a class="nav-link color-aqua-hover"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=2"><i
-														class="fas fa-shopping-cart"></i></a></li>
+						</div></li>
+					<li class="nav-item"><a class="nav-link color-aqua-hover"
+						data-toggle="modal" data-target="#cart"><i
+							class="fas fa-shopping-cart"></i><span class="cart-items">(0)</span></a></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"

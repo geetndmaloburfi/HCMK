@@ -124,8 +124,6 @@ if (request.getSession().getAttribute("Admin").equals("yes")) {
 				</div>
 				<div></div>
 			</div>
-
-
 			<input type="hidden" name="idnum" value="${product.productId }">
 			<button type="submit" class="btn btn-primary ">Update</button>
 			<button type="reset" class="btn btn-primary ">Reset</button>

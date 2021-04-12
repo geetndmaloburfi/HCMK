@@ -63,13 +63,18 @@
            </div>
         </div>
       </div>
+      <div id="toast">
+      this is custom toast
+      </div>
       <!-- end footer -->
       <!-- Core JavaScript
          ================================================== -->
           <script>
 magnify("myimage", 2);
 </script>
-  
+  <%@ include file="cartmodal.jsp" %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="js/cart.js"></script>
       <script src="js/jquery.min.js"></script>
       <script src="js/tether.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -78,9 +83,7 @@ magnify("myimage", 2);
       <script src="js/ekko-lightbox.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/slide.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  	  <script src="https://kit.fontawesome.com/b7801006ce.js" crossorigin="anonymous"></script>
 	
 </body>

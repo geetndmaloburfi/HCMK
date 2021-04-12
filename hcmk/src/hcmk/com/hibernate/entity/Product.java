@@ -128,10 +128,123 @@ public class Product {
 	}
 
 
-
-
+	
 
 	
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bestseller == null) ? 0 : bestseller.hashCode());
+		result = prime * result + ((cDate == null) ? 0 : cDate.hashCode());
+		result = prime * result + ((cartDetailId == null) ? 0 : cartDetailId.hashCode());
+		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result + ((mDate == null) ? 0 : mDate.hashCode());
+		result = prime * result + ((makingCharge == null) ? 0 : makingCharge.hashCode());
+		result = prime * result + ((metal == null) ? 0 : metal.hashCode());
+		result = prime * result + ((photos == null) ? 0 : photos.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + (int) (productId ^ (productId >>> 32));
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		result = prime * result + purity;
+		result = prime * result + quantity;
+		result = prime * result + ((summary == null) ? 0 : summary.hashCode());
+		result = prime * result + ((supplyId == null) ? 0 : supplyId.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (bestseller == null) {
+			if (other.bestseller != null)
+				return false;
+		} else if (!bestseller.equals(other.bestseller))
+			return false;
+		if (cDate == null) {
+			if (other.cDate != null)
+				return false;
+		} else if (!cDate.equals(other.cDate))
+			return false;
+		if (cartDetailId == null) {
+			if (other.cartDetailId != null)
+				return false;
+		} else if (!cartDetailId.equals(other.cartDetailId))
+			return false;
+		if (categoryId == null) {
+			if (other.categoryId != null)
+				return false;
+		} else if (!categoryId.equals(other.categoryId))
+			return false;
+		if (mDate == null) {
+			if (other.mDate != null)
+				return false;
+		} else if (!mDate.equals(other.mDate))
+			return false;
+		if (makingCharge == null) {
+			if (other.makingCharge != null)
+				return false;
+		} else if (!makingCharge.equals(other.makingCharge))
+			return false;
+		if (metal == null) {
+			if (other.metal != null)
+				return false;
+		} else if (!metal.equals(other.metal))
+			return false;
+		if (photos == null) {
+			if (other.photos != null)
+				return false;
+		} else if (!photos.equals(other.photos))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (productId != other.productId)
+			return false;
+		if (productName == null) {
+			if (other.productName != null)
+				return false;
+		} else if (!productName.equals(other.productName))
+			return false;
+		if (purity != other.purity)
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (summary == null) {
+			if (other.summary != null)
+				return false;
+		} else if (!summary.equals(other.summary))
+			return false;
+		if (supplyId == null) {
+			if (other.supplyId != null)
+				return false;
+		} else if (!supplyId.equals(other.supplyId))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+
+
+
 
 
 	@Override
