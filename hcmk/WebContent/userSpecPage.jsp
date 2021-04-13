@@ -78,7 +78,7 @@ else{
 							<p class="titlebest">${product.price}</p>
 
 							<p>
-								<button  class="buttonbest"><a href="<%=request.getContextPath()%>/Product?p=${product.productId}">View</a></button>
+								<a href="<%=request.getContextPath()%>/Product?p=${product.productId}"><button  class="buttonbest">View</button></a>
 							</p>
 						</div>
 					</div>

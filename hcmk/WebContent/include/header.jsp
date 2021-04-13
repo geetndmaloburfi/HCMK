@@ -240,9 +240,7 @@ function magnify(imgID, zoom) {
 								class="dropdown-item text-secondary "
 								href="<%=request.getContextPath()%>/Admin">ADMIN LOGIN</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link color-aqua-hover"
-						data-toggle="modal" data-target="#cart" href="#"><i
-							class="fas fa-shopping-cart"></i><span class="cart-items">(0)</span></a></li>
+					
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"

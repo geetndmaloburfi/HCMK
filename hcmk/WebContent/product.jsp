@@ -36,6 +36,7 @@ sessionID = request.getSession().getId();
 		<div class="col m-3">
 		<div class="container-fluid">
 			<div class="card my-5">
+			<div class="container">
 			<h1>${product.title}</h1>
 			
 			<h4 class="text-secondary">Price : ${product.price }</h4>
@@ -44,10 +45,15 @@ sessionID = request.getSession().getId();
 			<p class="text-secondary">${product.summary } ${product.metal } Jewellery </p>
 			<p class="text-secondary">${product.productName} Collections </p>
 			<p class="text-secondary">Discount : No Discount on this deal</p>
-			<button  class="btn btn-primary" onclick="add_to_cart( ${product.productId } ,'${product.productName}',${product.price },${product.makingCharge },'${product.photos }')">ADD TO CART</button>
-			
-			
-							
+			<h2>${product.price }</h2>
+			<h3>${product.makingCharge}</h3>
+			<p class="text-secondary">${product.summary }</p>
+			<form action="<%=request.getContextPath()%>/CartAdd" method=post>
+			<input type="hidden" name="user" value="${username }">
+			<input type="hidden" name="productId" value="${product.productId}">
+			<button type="submit" class="btn btn-promary mb-5" >ADD TO CART</button>
+			</form>
+			</div>
 			</div>
 		</div>
 		</div>

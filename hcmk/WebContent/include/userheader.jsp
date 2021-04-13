@@ -250,15 +250,15 @@ function magnify(imgID, zoom) {
 								href="<%=request.getContextPath()%>/Orders">ORDERS</a> <a
 								class="dropdown-item  text-secondary"
 								href="<%=request.getContextPath()%>/Dashboard">DASHBOARD</a> 
-							<a class="dropdown-item  text-secondary" data-toggle="modal" data-target="#cart"
+							<a class="dropdown-item  text-secondary" href="<%=request.getContextPath()%>/Dashboard?getlink=2"
 								>CART</a>
 
 							<a class="dropdown-item   text-secondary"
 								href="<%=request.getContextPath()%>/Logout">LOGOUT</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link color-aqua-hover"
-						data-toggle="modal" data-target="#cart"><i
-							class="fas fa-shopping-cart"></i><span class="cart-items">(0)</span></a></li>
+						 href="<%=request.getContextPath()%>/Dashboard?getlink=2"><i
+							class="fas fa-shopping-cart"></i></a></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"

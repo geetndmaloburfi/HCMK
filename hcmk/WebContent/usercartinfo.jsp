@@ -15,8 +15,9 @@ String username = null, sessionID = null;
 String currentLoggedInUser = null;
 if (request.getSession().getAttribute("username") == null) {
 %>
-<jsp:include page="/include/header.jsp" />
+<jsp:include page="<%=request.getContextPath()%>" />
 <%
+
 } else {
 username = request.getSession().getAttribute("username").toString();
 
@@ -67,7 +68,11 @@ sessionID = request.getSession().getId();
 			<%
 			Users buyer = UsersDAO.getUserByUserName(username);
 			Cart mycart = CartDAO.getCartByUser(username, false);
-
+			if(mycart==null)
+			{
+				Users me=UsersDAO.getUserByUserName(username);
+				mycart=CartDAO.createCart(me);
+			}
 			List<Product> products = CartDetailDAO.getProductByUser(mycart.getCartId());
 			List<Product> productcat = new ArrayList<Product>();
 			if (products == null) {
@@ -78,39 +83,47 @@ sessionID = request.getSession().getId();
 					productcat.add(pro);
 				}
 			}
+			List<CartDetail> items= CartDetailDAO.getCartDetail(mycart);
 			%>
-
-			<c:forEach items="<%=productcat%>" var="product">
+			<% int i = 0;
+			for(  ; i<items.size()&&i<productcat.size() ; i++ ) {%>
+			
 				<div class="card">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-3 col-md-6 col-lg-4 col-xl-2">
 								<hr>
-								<img class="card-img mt-3 mb-3" src="${product.photos }"
+								<img class="card-img mt-3 mb-3" src="<%=productcat.get(i).getPhotos() %> "
 									style="width: 100%" alt="Card image">
 								<hr>
-
+								<form action="DeleteCart" method="post">
+								
+								<input type="hidden" name="cartdetailid" value="<%=items.get(i).getCartDetailId()%>">
+								<button type="submit" class="btn btn-primary ">Delete</button>
+								</form>
 							</div>
 							<div class="col-sm-9 col-md-6 col-lg-8 col-xl-10">
 								<div class="card">
 
 									<div class="card-header">
-										<h4>${product.productName }
+										<h4><%=productcat.get(i).getProductName() %>
 											<span class="text-primary">Product Id</span> :
-											${product.productId }
+											<%=productcat.get(i).getProductId() %>
 										</h4>
 									</div>
 									<div class="card-body">
-										<h5 class="card-title">${product.title }</h5>
+										<h5 class="card-title"><%=productcat.get(i).getMetal() %></h5>
 
-										<p class="card-text">${product.summary }
-											<span class="text-primary">Price </span>: ${product.price }<span
+										<p class="card-text"><%=productcat.get(i).getSummary() %>
+											<span class="text-primary">Price </span>: <%=productcat.get(i).getPrice() %><span
 												class="text-primary"> Making Charges </span>:
-											${product.makingCharge}
+											<%=productcat.get(i).getMakingCharge() %>
 										</p>
 									</div>
 									<div class="card-footer">
-										<h1>hey</h1>
+										<p>Quantity: <%=items.get(i).getQuantity() %></p>
+										<p>Total price:<%=items.get(i).getTotalPrice()%></p>
+										
 									</div>
 								</div>
 							</div>
@@ -118,7 +131,7 @@ sessionID = request.getSession().getId();
 					</div>
 
 				</div>
-			</c:forEach>
+			<%} %>
 		</div>
 	</div>
 </div>
