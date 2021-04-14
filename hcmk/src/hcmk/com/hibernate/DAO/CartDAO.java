@@ -127,4 +127,30 @@ public class  CartDAO {
 //		return productsList;
 //	}
 //	
+	public static void updateTotalPriceAfterDelete(Cart myCart,String value)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Cart.class)
+				.buildSessionFactory();
+		Cart s=null;
+		String gt;
+		double up=Double.parseDouble(value);
+		Session session =factory.getCurrentSession();
+		try {
+				session.beginTransaction();
+				s=session.get(Cart.class, myCart.getCartId());
+				gt=s.getGrandTotal();
+				double existingValue=Double.parseDouble(gt);
+				existingValue=existingValue-up;
+				s.setGrandTotal(existingValue+"");
+				session.saveOrUpdate(s);
+				session.getTransaction().commit();				
+			}finally {
+				session.close();
+				factory.close();
+			}
+		
+		
+	}
 }

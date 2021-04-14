@@ -135,4 +135,4 @@ function goToCheckout() {
 }
 
 
-
+//request to server to create order

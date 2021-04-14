@@ -1,5 +1,9 @@
 package hcmk.com.hibernate.DAO;
+import java.io.Serializable;
 import java.util.*;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -211,6 +215,78 @@ public class  CartDetailDAO {
 		return Cartdetails;
 	}
 	
-	
+	public static Object[] getCartDetailById(long id)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(CartDetail.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		CartDetail Cartdetail;
+		Object[] obj=new Object[2];
+		try {
+			session.beginTransaction();
+			Cartdetail=session.get(CartDetail.class, id);
+			Cart cart=Cartdetail.getCartId();
+			obj[0]=Cartdetail;
+			obj[1]=cart;
+			
+		}
+		 finally {
+			session.close();
+			factory.close();
+		}
+		return obj;
+	}
+	@SuppressWarnings("unchecked")
+	public static String deleteCartDetailById(long id)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(CartDetail.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		CartDetail Cartdetail;
+		String price="";
+		Cart cart;
+		try {
+			session.beginTransaction();
+			Cartdetail=session.get(CartDetail.class, id);
+			cart=Cartdetail.getCartId();
+			price=Cartdetail.getTotalPrice();
+			System.out.println(price);
+			
+		}finally {
+			
+		}
+		session.close();
+		factory.close();
+		CartDAO.updateTotalPriceAfterDelete(cart, price);
+		 factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(CartDetail.class)
+				.buildSessionFactory();
+		session =factory.getCurrentSession();
+		try {
+			Thread.sleep((long) 200);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+		List<CartDetail> deleteditem;
+		try {
+			session.beginTransaction();
+			
+			Query query = session.createQuery("delete cartDetail where cartDetailId= :id");
+			query.setParameter("id",id);
+			 
+			int result = query.executeUpdate();		
+			System.out.println(result);
+		}finally {
+			session.close();
+			factory.close();
+		}
+		return price;
+	}
 	
 }

@@ -74,7 +74,7 @@ public class ValidateAdmin extends HttpServlet {
 		{
 			request.getSession().invalidate();
 			HttpSession newSession=request.getSession(true);
-			newSession.setMaxInactiveInterval(300);
+			newSession.setMaxInactiveInterval(3000);
 			newSession.setAttribute("username",admin.getUserNameAdmin());
 			newSession.setAttribute("Admin","yes");
 			getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);

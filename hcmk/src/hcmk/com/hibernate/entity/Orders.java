@@ -32,6 +32,7 @@ public class Orders {
 	String orderDate;
 	@Column(name = "paid")
 	String paid;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="shippingId")
 	Shipping shippingId;
@@ -43,7 +44,21 @@ public class Orders {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="addressId")
 	Address addressId;
+	@Column(name="paymentId")
+	String paymentId;
+	@Column(name="status")
+	String status;
+	@Column(name="razorOrderId")
+	String razorOrderId;
 	
+	public String getRazorOrderId() {
+		return razorOrderId;
+	}
+
+	public void setRazorOrderId(String razorOrderId) {
+		this.razorOrderId = razorOrderId;
+	}
+
 	public Orders() {
 		super();
 	}
@@ -82,6 +97,21 @@ public class Orders {
 		this.userName = userName;
 		this.orderDetailId = orderDetailId;
 		this.addressId = addressId;
+	}
+	public String getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public long getOrderId() {
 		return orderId;

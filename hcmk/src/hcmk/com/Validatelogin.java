@@ -40,7 +40,7 @@ public class Validatelogin extends HttpServlet {
 		{
 			request.getSession().invalidate();
 			HttpSession newSession=request.getSession(true);
-			newSession.setMaxInactiveInterval(300);
+			newSession.setMaxInactiveInterval(3000);
 			newSession.setAttribute("username", user.getUserName());
 			getServletContext().getRequestDispatcher("/userSpecPage.jsp").forward(request, response);
 		}

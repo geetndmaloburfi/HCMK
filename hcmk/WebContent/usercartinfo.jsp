@@ -13,10 +13,11 @@
 <%
 String username = null, sessionID = null;
 String currentLoggedInUser = null;
-if (request.getSession().getAttribute("username") == null) {
-%>
-<jsp:include page="<%=request.getContextPath()%>" />
-<%
+if (request.getSession().getAttribute("username") == null) 
+{
+  
+response.sendRedirect("index.jsp");  
+
 
 } else {
 username = request.getSession().getAttribute("username").toString();
@@ -129,9 +130,12 @@ sessionID = request.getSession().getId();
 							</div>
 						</div>
 					</div>
-
+					
 				</div>
 			<%} %>
+			<div class="container m-5 text-align-right">
+				<h4>Total Price To Pay: <%=mycart.getGrandTotal() %> </h4><a href="checkout.jsp"><button class="btn btn-primary btn-block">Proceed to buy</button></a>
+			</div>	
 		</div>
 	</div>
 </div>

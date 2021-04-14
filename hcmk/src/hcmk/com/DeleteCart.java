@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hcmk.com.hibernate.DAO.CartDetailDAO;
+import hcmk.com.hibernate.entity.Cart;
+import hcmk.com.hibernate.entity.CartDetail;
+
 @WebServlet("/DeleteCart")
 public class DeleteCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,8 +20,15 @@ public class DeleteCart extends HttpServlet {
      
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("cartid")+"cartid");
-		System.out.println(request.getParameter("cartdetailid")+"cartDetailid");
+		long cartDetailId=Long.parseLong(request.getParameter("cartdetailid"));
+		System.out.println(cartDetailId);
+		Object[] obj=CartDetailDAO.getCartDetailById(cartDetailId);
+		CartDetail cartitem=(CartDetail)obj[0];
+		Cart mycart= (Cart)obj[1];
+		String reducePrice=CartDetailDAO.deleteCartDetailById(cartitem.getCartDetailId());
+		System.out.println(reducePrice);
+		request.getSession().setAttribute("message","Product Deleted from cart");
+		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 }

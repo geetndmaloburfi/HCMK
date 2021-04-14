@@ -77,7 +77,7 @@ public class AddProductController extends HttpServlet {
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		Date dNow = new Date( );
