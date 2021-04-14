@@ -238,7 +238,7 @@ public class  CartDetailDAO {
 		}
 		return obj;
 	}
-	@SuppressWarnings("unchecked")
+
 	public static String deleteCartDetailById(long id)
 	{
 		SessionFactory factory=new Configuration()
@@ -280,7 +280,8 @@ public class  CartDetailDAO {
 			Query query = session.createQuery("delete cartDetail where cartDetailId= :id");
 			query.setParameter("id",id);
 			 
-			int result = query.executeUpdate();		
+			int result = query.executeUpdate();	
+			session.getTransaction().commit();
 			System.out.println(result);
 		}finally {
 			session.close();
@@ -288,5 +289,24 @@ public class  CartDetailDAO {
 		}
 		return price;
 	}
-	
+	public static void deleteCartDetailByCartId(Cart c)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(CartDetail.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			
+			Query query = session.createQuery("delete cartDetail where cartId="+c.getCartId());
+			query.executeUpdate();		
+			session.getTransaction().commit();
+		}finally {
+			session.close();
+			factory.close();
+		}
+		return ;
+		
+	}
 }

@@ -228,6 +228,7 @@ if (request.getSession().getAttribute("username") == null) {
     <input type="hidden" name="paymentAmount" value="${amount }">
 		<input type="hidden" name="mycartId" value="${cartid}">
 		<input type="hidden" name="user" value="<%=buyer.getUserName() %>" >
+		<input type="hidden" name="address" value="${address }" >
 		
     <input type="hidden" name="RzorPayID" value="${razorpayOrderId }">
    

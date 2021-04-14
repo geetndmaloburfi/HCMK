@@ -53,7 +53,7 @@ public class Payment extends HttpServlet {
 		request.setAttribute("amount",Double.parseDouble(amount)*100);
 		request.setAttribute("cartid", CartId);
 		request.setAttribute("razorpayOrderId", order.get("id").toString());
-		
+		request.setAttribute("address",address);
 		getServletContext().getRequestDispatcher("/checkout.jsp").forward(request, response);
 		
 		

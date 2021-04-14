@@ -153,4 +153,26 @@ public class  CartDAO {
 		
 		
 	}
+	public static void resetTotalPriceAfterOrder(Cart myCart,String value)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Cart.class)
+				.buildSessionFactory();
+		Cart s=null;
+		Session session =factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			s=session.get(Cart.class, myCart.getCartId());
+			s.setGrandTotal(value);
+			session.saveOrUpdate(s);
+			session.getTransaction().commit();		
+		}finally {
+		session.close();
+		factory.close();
+		}
+		
+	}
+		
+	
 }

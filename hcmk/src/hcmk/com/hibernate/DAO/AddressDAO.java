@@ -33,4 +33,22 @@ public class AddressDAO {
 		
 		return address;
 	}
+	public static Address getAddressbyId(long id) 
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Address.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		Address address;
+		try {
+			session.beginTransaction();
+			address=session.get(Address.class, id);
+		} finally {
+			session.close();
+			factory.close();
+		}
+		
+		return address;
+	}
 }
