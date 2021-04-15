@@ -30,7 +30,7 @@ public class DashboardController extends HttpServlet {
 		int working=Integer.parseInt(request.getParameter("getlink"));
 		if(working==1)
 		{
-			
+			getServletContext().getRequestDispatcher("/userorders.jsp").forward(request, response);
 		}
 		else if(working==2)
 		{
@@ -39,7 +39,14 @@ public class DashboardController extends HttpServlet {
 		}
 		else if(working==3)
 		{
-			//List<Product> products = ProductDAO.getAllProducts();
+			getServletContext().getRequestDispatcher("/viewaddress.jsp").forward(request, response);
+		}else if(working==0)
+		{
+			getServletContext().getRequestDispatcher("/userdashboard.jsp").forward(request, response);
+		}
+		else if(working==4)
+		{
+			getServletContext().getRequestDispatcher("/addnewaddress.jsp").forward(request, response);
 		}
 	}
 

@@ -146,6 +146,10 @@ if (request.getSession().getAttribute("username") == null) {
 					}
 					%>
 				</table>
+				<%
+				List<Address> myaddress = null;
+				myaddress = AddressDAO.getAddressList(buyer.getUserName());
+				%>
 				<div class="container">
 					<h4>
 						<%
@@ -154,20 +158,20 @@ if (request.getSession().getAttribute("username") == null) {
 						Total Price To Pay:
 						<%=df.format(Double.parseDouble(mycart.getGrandTotal()))%>
 					</h4>
-
-					<a><button class="btn btn-primary btn-big">TAP TO PAY</button></a>
+					<c:if test="${myaddress!= null }">
+						<a><button class="btn btn-primary btn-big">TAP TO PAY</button></a>
+					</c:if>
 				</div>
 			</div>
+			
 			<div class="col-2 bg-light m-5">
 				<div class="container m-5">
 					<h3>Address</h3>
 				</div>
 				<%
-				List<Address> myaddress = AddressDAO.getAddressList(buyer.getUserName());
-
-				if (myaddress == null) {
+				if (myaddress.size() == 0) {
 				%>
-				<button></button>
+				<p>Can't place Order now please update order first</p>
 				<%
 				} else {
 				%>
@@ -194,10 +198,11 @@ if (request.getSession().getAttribute("username") == null) {
 			</div>
 		</div>
 
-		<input type="hidden" name="paymentAmount" value="<%=df.format(Double.parseDouble(mycart.getGrandTotal()))%>">
-		<input type="hidden" name="mycartId" value="<%=mycart.getCartId() %>">
-		<input type="hidden" name="user" value="<%=buyer.getUserName() %>" >
-		
+		<input type="hidden" name="paymentAmount"
+			value="<%=df.format(Double.parseDouble(mycart.getGrandTotal()))%>">
+		<input type="hidden" name="mycartId" value="<%=mycart.getCartId()%>">
+		<input type="hidden" name="user" value="<%=buyer.getUserName()%>">
+
 		<div class="form-check">
 			<input class="form-check-input" type="radio" checked>
 			<p>Online Payment Is Available Till Now</p>
@@ -207,33 +212,30 @@ if (request.getSession().getAttribute("username") == null) {
 			<p>Cash On Delivery Not Available</p>
 		</div>
 	</form>
-	
-	<%if(request.getAttribute("payNow")!=null) {%>
-<form action="RazorPay" method="POST">
-    <script
-            src="https://checkout.razorpay.com/v1/checkout.js"
-            data-key="rzp_test_GhX8AcBTmCX9Qd"
-            data-amount=${amount }
-            data-order_id=${razorpayOrderId }
-            data-name="Purnima soni"
-            data-description="HCMK "
-            data-image="images/logo.png"
-            data-netbanking="true"
-            data-description="HCMK Test"
-            data-prefill.name=""
-            data-prefill.email=""
-            data-prefill.contact=""
-            data-notes.shopping_order_id="${cartid }">
-    </script>
-    <input type="hidden" name="paymentAmount" value="${amount }">
-		<input type="hidden" name="mycartId" value="${cartid}">
-		<input type="hidden" name="user" value="<%=buyer.getUserName() %>" >
-		<input type="hidden" name="address" value="${address }" >
-		
-    <input type="hidden" name="RzorPayID" value="${razorpayOrderId }">
-   
-</form>
-<%} %>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+	<%
+	if (request.getAttribute("payNow") != null) {
+	%>
+	<form action="RazorPay" method="POST">
+		<script src="https://checkout.razorpay.com/v1/checkout.js"
+			data-key="rzp_test_GhX8AcBTmCX9Qd" data-amount=${amount }
+			data-order_id=${razorpayOrderId } data-name="Purnima soni"
+			data-description="HCMK " data-image="images/logo.png"
+			data-netbanking="true" data-description="HCMK Test"
+			data-prefill.name="" data-prefill.email="" data-prefill.contact=""
+			data-notes.shopping_order_id="${cartid }">
+			
+		</script>
+		<input type="hidden" name="paymentAmount" value="${amount }">
+		<input type="hidden" name="mycartId" value="${cartid}"> <input
+			type="hidden" name="user" value="<%=buyer.getUserName()%>">
+		<input type="hidden" name="address" value="${address }"> <input
+			type="hidden" name="RzorPayID" value="${razorpayOrderId }">
+
+	</form>
+	<%
+	}
+	%>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
 </html>

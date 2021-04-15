@@ -38,29 +38,25 @@ sessionID = request.getSession().getId();
 				int getlink = 0;
 				%>
 				<ul class="nav nav-tabs flex-column">
-					<li class="nav-item"><a class="nav-link text-white"
+					<li class="nav-item "><a class="nav-link text-light"
 						onclick="<%getlink = 1;%>"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=1">VIEW
-							ORDERS</a></li>
-					<li class="nav-item active"><a class="nav-link text-white"
+						href="<%=request.getContextPath()%>/Dashboard?getlink=1">View
+							Orders</a></li>
+					<li class="nav-item active"><a class="nav-link text-light"
 						onclick="<%getlink = 2;%>"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=2">VIEW
-							CART</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
+						href="<%=request.getContextPath()%>/Dashboard?getlink=2">View
+							Cart</a></li>
+					<li class="nav-item"><a class="nav-link text-light"
 						onclick="<%getlink = 4;%>"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=3">MANAGE
-							ADDRESS</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
-						onclick="<%getlink = 6;%>"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=4"></a></li>
-					<li class="nav-item"><a class="nav-link text-white"
-						onclick="<%getlink = 7;%>"
-						href="<%=request.getContextPath()%>/Dashboard?getlink=5">VIEW
-							ORDERS</a></li>
-					<li class="nav-item"><a class="nav-link text-white"
+						href="<%=request.getContextPath()%>/Dashboard?getlink=3">View
+							Address</a></li>
+					<li class="nav-item"><a class="nav-link text-light"
+						onclick="<%getlink = 4;%>"
+						href="<%=request.getContextPath()%>/Dashboard?getlink=4">Add
+							New Address</a></li>
+					<li class="nav-item"><a class="nav-link text-light"
 						onclick="<%getlink = 8;%>"
 						href="<%=request.getContextPath()%>/Logout">Log Out</a></li>
-
 				</ul>
 			</div>
 		</div>
@@ -83,7 +79,7 @@ sessionID = request.getSession().getId();
 				for (Product pro : products) {
 					productcat.add(pro);
 				}
-			}
+			
 			List<CartDetail> items= CartDetailDAO.getCartDetail(mycart);
 			%>
 			<% int i = 0;
@@ -135,7 +131,8 @@ sessionID = request.getSession().getId();
 			<%} %>
 			<div class="container m-5 text-align-right">
 				<h4>Total Price To Pay: <%=mycart.getGrandTotal() %> </h4><a href="checkout.jsp"><button class="btn btn-primary btn-block">Proceed to buy</button></a>
-			</div>	
+			</div>
+			<%} %>	
 		</div>
 	</div>
 </div>

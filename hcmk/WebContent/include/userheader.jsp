@@ -170,7 +170,7 @@ function magnify(imgID, zoom) {
 				</div>
 			</div>
 		</div>
-</header>
+	</header>
 	<!-- end header -->
 	<!-- navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-black "
@@ -247,30 +247,32 @@ function magnify(imgID, zoom) {
 							style="background-color: black;" aria-labelledby="navbarDropdow">
 
 							<a class="dropdown-item  text-secondary"
-								href="<%=request.getContextPath()%>/Orders">ORDERS</a> <a
-								class="dropdown-item  text-secondary"
-								href="<%=request.getContextPath()%>/Dashboard">DASHBOARD</a> 
-							<a class="dropdown-item  text-secondary" href="<%=request.getContextPath()%>/Dashboard?getlink=2"
-								>CART</a>
+								href="<%=request.getContextPath()%>/Dashboard?getlink=1">ORDERS</a>
+							<a class="dropdown-item  text-secondary"
+								href="<%=request.getContextPath()%>/Dashboard?getlink=0">DASHBOARD</a>
+							<a class="dropdown-item  text-secondary"
+								href="<%=request.getContextPath()%>/Dashboard?getlink=2">CART</a>
 
 							<a class="dropdown-item   text-secondary"
 								href="<%=request.getContextPath()%>/Logout">LOGOUT</a>
 						</div></li>
 					<li class="nav-item"><a class="nav-link color-aqua-hover"
-						 href="<%=request.getContextPath()%>/Dashboard?getlink=2"><i
+						href="<%=request.getContextPath()%>/Dashboard?getlink=2"><i
 							class="fas fa-shopping-cart"></i></a></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-light btn-rounded" style="background-color: black;" type="submit"><i class="fas fa-search fa-lg"></i></button>
+					<button class="btn btn-outline-light btn-rounded"
+						style="background-color: black;" type="submit">
+						<i class="fas fa-search fa-lg"></i>
+					</button>
 				</form>
 			</div>
 		</div>
-	</nav>	
-	
-	
-	
-	
+	</nav>
+
+
+
+
 	<!-- slider -->
-	

@@ -2,6 +2,7 @@ package hcmk.com.hibernate.DAO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,6 +49,25 @@ public class OrdersDAO {
 			factory.close();
 		}
 		return order;
+	}
+	@SuppressWarnings("unchecked")
+	public static List<Orders> getOrdersByUser(String user)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Orders.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		List<Orders> orders=null;
+		try {
+			session.beginTransaction();
+			orders=session.createQuery("from orders where userName='"+user+"'").getResultList();
+			
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return orders;
 	}
 
 }

@@ -51,4 +51,24 @@ public class OrderDetailDAO {
 		
 		return orders;
 	}
+	@SuppressWarnings("unchecked")
+	public static List<OrderDetail> getOrderDetailListByOrderId(Long orderid)
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(OrderDetail.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		List<OrderDetail> details;
+		try {
+			session.beginTransaction();
+			details=session.createQuery("from orderDetail where orderId="+orderid).getResultList();
+			
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return details;
+	}
+	
 }
