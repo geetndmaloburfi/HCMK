@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import hcmk.com.hibernate.entity.Address;
-import hcmk.com.hibernate.entity.Cart;
+
 import hcmk.com.hibernate.entity.Orders;
 import hcmk.com.hibernate.entity.Users;
 
@@ -20,6 +20,7 @@ public class OrdersDAO {
 	}
 	public static Orders createOrder(String grandTotal,Address add,Users buyer,String Payid,String razorpayid)
 	{
+		@SuppressWarnings("unused")
 		long id;
 		SessionFactory factory=new Configuration()
 				.configure("hibernate.cfg.xml")
@@ -69,5 +70,26 @@ public class OrdersDAO {
 		}
 		return orders;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<Orders> getAllOrders()
+	{
+		SessionFactory factory=new Configuration()
+				.configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Orders.class)
+				.buildSessionFactory();
+		Session session =factory.getCurrentSession();
+		List<Orders> orders=null;
+		try {
+			session.beginTransaction();
+			orders=session.createQuery("from orders ").getResultList();
+			
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return orders;
+	}
+	
 
 }
