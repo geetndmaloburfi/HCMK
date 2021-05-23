@@ -158,10 +158,10 @@ if (request.getSession().getAttribute("username") == null) {
 						Total Price To Pay:
 						<%=df.format(Double.parseDouble(mycart.getGrandTotal()))%>
 					</h4>
-					<%if(myaddress==null){ %>
+					
 					
 						<a><button class="btn btn-primary btn-big">TAP TO PAY</button></a>
-					<%} %>
+					
 				</div>
 			</div>
 			

@@ -57,14 +57,35 @@ public class AddProductController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Product newProduct = new Product();
+		Date dNow = new Date( );
+		 
+	      SimpleDateFormat ft = 
+	      new SimpleDateFormat ("MM/dd/yyyy");
+	     System.out.println(request.getParameter("pname")+"\n"+request.getParameter("pure")+"\n"+request.getParameter("psummary"));
+		newProduct.setProductName(request.getParameter("pname"));
+		newProduct.setTitle(request.getParameter("ptitle"));
+		newProduct.setMetal(request.getParameter("pmetal"));
+		newProduct.setPrice(request.getParameter("pprice"));
+		newProduct.setQuantity(Integer.parseInt(request.getParameter("pquantity")));
+		newProduct.setPurity(Integer.parseInt(request.getParameter("pure")));
+		newProduct.setcDate(ft.format(dNow));
+		newProduct.setmDate(ft.format(dNow));
+		newProduct.setBestseller(Boolean.parseBoolean(request.getParameter("pbestseller")));
+		Supply sup=SupplyDAO.getSupplyById(Long.parseLong((request.getParameter("ps"))));
+		newProduct.setSupplyId(sup);
+		Category cat=CategoryDAO.getCategoryById(Long.parseLong((request.getParameter("pc"))));
+		newProduct.setCategoryId(cat);
+		newProduct.setSummary(request.getParameter("psummary"));
+		newProduct.setMakingCharge(request.getParameter("pmc"));
 		ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
+		String temp=null;
 		try {
 			List<FileItem> image = upload.parseRequest(request);
 			for (FileItem i : image)
 			{
 				if (i.getName() != null)
 				{
-					String temp = i.getName();
+					 temp = i.getName();
 					temp = "images/photoproducthcmk//" + temp;
 					System.out.println(i.getName());
 					newProduct.setPhotos(temp);
@@ -80,23 +101,7 @@ public class AddProductController extends HttpServlet {
 			
 			e.printStackTrace();
 		}
-		Date dNow = new Date( );
-	      SimpleDateFormat ft = 
-	      new SimpleDateFormat ("MM/dd/yyyy");
-		newProduct.setProductName(request.getParameter("pname"));
-		newProduct.setTitle(request.getParameter("ptitle"));
-		newProduct.setMetal(request.getParameter("pmetal"));
-		newProduct.setPrice(request.getParameter("pprice"));
-		newProduct.setPurity(Integer.parseInt(request.getParameter("pname")));
-		newProduct.setQuantity(Integer.parseInt(request.getParameter("pquantity")));
-		newProduct.setcDate(ft.format(dNow));
-		newProduct.setmDate(ft.format(dNow));
-		newProduct.setBestseller(Boolean.parseBoolean(request.getParameter("pbestseller")));
-		Supply sup=SupplyDAO.getSupplyById(Long.parseLong((request.getParameter("ps"))));
-		newProduct.setSupplyId(sup);
-		Category cat=CategoryDAO.getCategoryById(Long.parseLong((request.getParameter("pc"))));
-		newProduct.setCategoryId(cat);
-		newProduct.setSummary(request.getParameter("psummary"));
+		newProduct.setPhotos(temp);
 		ProductDAO.addProduct(newProduct);
 		getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
 

@@ -159,6 +159,7 @@ public class ProductDAO {
 			p.setSummary(demo.getSummary());
 			p.setmDate(ft.format(dNow));
 			tr.commit();
+			
 			//System.out.println(product);
 		} finally {
 			session.close();

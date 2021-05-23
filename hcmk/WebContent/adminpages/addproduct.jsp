@@ -10,7 +10,8 @@ if (request.getSession().getAttribute("username") == null) {
 %>
 <jsp:include page="/index.jsp" />
 <%
-return ;} else {
+return;
+} else {
 if (request.getSession().getAttribute("Admin").equals("yes")) {
 	username = request.getSession().getAttribute("username").toString();
 	sessionID = request.getSession().getId();
@@ -32,64 +33,57 @@ if (request.getSession().getAttribute("Admin").equals("yes")) {
 
 				<div class="form-group col-md-6">
 					<p>Product Name</p>
-					<input type="text" class="form-control" name="pname"
-						value="${product.productName }">
+					<input type="text" class="form-control" name="pname" required />
 				</div>
 				<div class="form-group col-md-6">
 					<p>Product Title</p>
-					<input type="text" class="form-control" name="ptitle"
-						value="${product.title }">
+					<input type="text" class="form-control" name="ptitle" required />
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<p>Product Metal</p>
-					<input type="text" class="form-control" name="pmetal"
-						value="${product.metal }">
+					<input type="text" class="form-control" name="pmetal" required />
 				</div>
 				<div class="form-group col-md-6">
 					<p>Product Price</p>
-					<input type="text" class="form-control" name="pprice"
-						value="${product.price }">
+					<input type="text" class="form-control" name="pprice" required />
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<p>Product Purity</p>
-					<input type="number" class="form-control" name="ppurity"
-						value="${product.purity }">
+					<input type="number" class="form-control" name="pure" required />
 				</div>
 				<div class="form-group col-md-6">
 					<p>Product Quantity</p>
-					<input type="number" class="form-control" name="pquantity"
-						value="${product.quantity }">
+					<input type="number" class="form-control" name="pquantity" required />
 				</div>
 			</div>
-			
-				<div class="form-group">
-					<p>Product Making Charges</p>
-					<input type="text" class="form-control" name="pmc"
-						value="${product.makingCharge }">
-				</div>
-				
-			
+
+			<div class="form-group">
+				<p>Product Making Charges</p>
+				<input type="text" class="form-control" name="pmc" required />
+			</div>
+
+
 			<div class="input-group m-3">
-			<div class="container">
-			<p>ProductPhoto</p>
-				<div class="custom-file">
-					<input type="file" class="custom-file-input" name="pphoto" /> 
-				<label class="custom-file-label">Choose file</label>
+				<div class="container">
+					<p>ProductPhoto</p>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="pphoto"
+							required /> <label class="custom-file-label">Choose file</label>
+					</div>
 				</div>
-			</div>
 			</div>
 			<div class="input-group mb-3">
-			
+
 				<div class="input-group-prepend">
 					<label class="input-group-text">Category</label>
 				</div>
-				<select class="custom-select" name="pc" >
+				<select class="custom-select" name="pc">
 					<option selected>Choose...</option>
-					<option  value="1">Chain</option>
+					<option value="1">Chain</option>
 					<option value="2">Pendants</option>
 					<option value="3">Earring</option>
 					<option value="4">Finger Rings</option>
@@ -113,13 +107,12 @@ if (request.getSession().getAttribute("Admin").equals("yes")) {
 			</div>
 			<div class="form-group">
 				<p>Product Summary</p>
-				<input class="form-control" name="psummary"
-					value="${product.summary}" rows="3"></input>
+				<input class="form-control" name="psummary" rows="3" />
 			</div>
 			<div class="form-group">
 				<div class="form-check">
 					<input class="form-check-input" name="pbestseller" type="checkbox"
-						value="${product.bestseller }">
+						required />
 					<p class="form-check-label">BestSeller</p>
 				</div>
 				<div></div>
